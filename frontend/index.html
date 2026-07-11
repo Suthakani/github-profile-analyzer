@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Profile Analyzer</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header class="header">
+      <h1><i class="fa-brands fa-github"></i> GitHub Profile Analyzer</h1>
+      <p>Analyze GitHub profiles, repositories and statistics.</p>
+    </header>
+
+    <!-- Search Box -->
+    <div class="search-box">
+      <input
+        type="text"
+        id="username"
+        placeholder="Enter GitHub Username..."
+      >
+
+      <button onclick="getProfile()">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        Search
+      </button>
+    </div>
+
+    <!-- Loading -->
+    <div id="loader" class="loader" style="display:none;">
+      <div class="spinner"></div>
+      <p>Loading Profile...</p>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" style="display:none;">
+
+      <!-- Profile Card -->
+      <div class="profile-card">
+
+        <img id="avatar" src="" alt="Profile">
+
+        <h2 id="name"></h2>
+
+        <p id="bio"></p>
+
+        <a id="githubLink" target="_blank">
+          View GitHub Profile
+        </a>
+
+      </div>
+
+      <!-- Statistics -->
+      <div class="stats-grid">
+
+        <div class="stat-card">
+          <i class="fa-solid fa-users"></i>
+          <h3>Followers</h3>
+          <p id="followers">0</p>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-user-plus"></i>
+          <h3>Following</h3>
+          <p id="following">0</p>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-book"></i>
+          <h3>Repositories</h3>
+          <p id="repos">0</p>
+        </div>
+
+        <div class="stat-card">
+          <i class="fa-solid fa-star"></i>
+          <h3>Total Stars</h3>
+          <p id="stars">0</p>
+        </div>
+
+      </div>
+
+      <!-- Profile Score -->
+      <div class="score-card">
+        <h2>GitHub Profile Score</h2>
+
+        <div class="progress-bar">
+          <div id="scoreFill"></div>
+        </div>
+
+        <p id="scoreText">0 / 100</p>
+      </div>
+
+      <!-- Charts -->
+      <div class="chart-section">
+        <h2>Languages Used</h2>
+        <canvas id="langChart"></canvas>
+      </div>
+
+      <!-- Top Repositories -->
+      <div class="repo-section">
+        <h2>Top Repositories</h2>
+
+        <div id="repoList" class="repo-grid">
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Error -->
+    <div id="error" style="display:none;">
+      <h3>User not found ❌</h3>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
