@@ -14,7 +14,7 @@ async function getProfile() {
 
   try {
     const response = await fetch(
-      `http://localhost:5000/api/profile/${username}`
+      `https://api.github.com/users/${encodeURIComponent(username)}`
     );
 
     if (!response.ok) {
@@ -23,8 +23,8 @@ async function getProfile() {
 
     const data = await response.json();
 
-    const user = data.user;
-    const repos = data.repos;
+    const user = data;
+    const repos = await (await fetch(`https://api.github.com/users/${encodeURIComponent(username)}/repos?per_page=100`)).json();
 
     // Profile
     document.getElementById("avatar").src = user.avatar_url;
